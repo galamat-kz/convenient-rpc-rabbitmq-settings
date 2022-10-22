@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,\
-kz.galamat.rabbitmqtorequestdispatcher.infrastructure.configurations.SpringAutoConfiguration,\
-kz.galamat.rabbitmqtorequestdispatcher.infrastructure.configurations.RabbitRpcConfiguration
+kz.galamat.configurations.SpringAutoConfiguration,\
+kz.galamat.configurations.RabbitRpcAutoConfiguration

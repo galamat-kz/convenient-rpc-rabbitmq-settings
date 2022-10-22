@@ -1,19 +1,52 @@
 plugins {
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
+    id 'maven-publish'
 }
 
 group 'kz.galamat'
-version '1.0-SNAPSHOT'
+version '0.0.1'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }
 
-test {
-    useJUnitPlatform()
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = ''
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = 'Convenient Rpc Rabbitmq settings'
+                description = 'Convenient Rpc Rabbitmq: properies, queues and containers'
+                developers {
+                    developer {
+                        id = 'yersinKZ'
+                        name = 'Yersin Mukay'
+                        email = 'mukaiyersin@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHub-mvn-repo"
+            url = "file:///Users/yersinmukay/IdeaProjects/galamat-kz-mvn-repo"
+        }
+    }
 }

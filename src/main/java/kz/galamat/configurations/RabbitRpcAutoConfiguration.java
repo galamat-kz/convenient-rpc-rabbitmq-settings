@@ -8,16 +8,20 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
+/**
+ * Created by Yersin Mukay on 14.10.2022
+ */
 @Configuration
-public class RabbitRpcConfiguration {
+public class RabbitRpcAutoConfiguration {
 
-    @Autowired
-    private RpcProperties rpcProperties;
+    private final RpcProperties rpcProperties;
+
+    public RabbitRpcAutoConfiguration(RpcProperties rpcProperties) {
+        this.rpcProperties = rpcProperties;
+    }
 
     /** *
      * Configure the Send Message Queue

@@ -1,24 +1,66 @@
-package kz.galamat.rabbitmqtorequestdispatcher.infrastructure.configurations;
+package kz.galamat.configurations;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Setter;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.UUID;
 
-@ConfigurationProperties(prefix = "spring.rabbit.rpc")
-@Data
+/**
+ * Created by Yersin Mukay on 14.10.2022
+ */
+@ConfigurationProperties(prefix = "spring.convenient.rpc.rabbitmq")
 public class RpcProperties implements InitializingBean {
 
     private String queue;
     private String replyQueuePrefix;
     private Boolean appendRandomForReplyQueueName;
     private String exchange;
-    @Setter(AccessLevel.NONE)
     private String replyQueueName;
     private long replyTimeout;
+
+    public String getQueue() {
+        return queue;
+    }
+
+    public void setQueue(String queue) {
+        this.queue = queue;
+    }
+
+    public String getReplyQueuePrefix() {
+        return replyQueuePrefix;
+    }
+
+    public void setReplyQueuePrefix(String replyQueuePrefix) {
+        this.replyQueuePrefix = replyQueuePrefix;
+    }
+
+    public Boolean getAppendRandomForReplyQueueName() {
+        return appendRandomForReplyQueueName;
+    }
+
+    public void setAppendRandomForReplyQueueName(Boolean appendRandomForReplyQueueName) {
+        this.appendRandomForReplyQueueName = appendRandomForReplyQueueName;
+    }
+
+    public String getExchange() {
+        return exchange;
+    }
+
+    public void setExchange(String exchange) {
+        this.exchange = exchange;
+    }
+
+    public String getReplyQueueName() {
+        return replyQueueName;
+    }
+
+    public long getReplyTimeout() {
+        return replyTimeout;
+    }
+
+    public void setReplyTimeout(long replyTimeout) {
+        this.replyTimeout = replyTimeout;
+    }
 
     @Override
     public void afterPropertiesSet() {
