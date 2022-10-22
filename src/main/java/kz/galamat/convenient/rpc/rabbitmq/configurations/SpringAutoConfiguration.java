@@ -1,4 +1,4 @@
-package kz.galamat.configurations;
+package kz.galamat.convenient.rpc.rabbitmq.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

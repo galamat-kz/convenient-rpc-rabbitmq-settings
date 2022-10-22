@@ -1,4 +1,4 @@
-package kz.galamat.configurations;
+package kz.galamat.convenient.rpc.rabbitmq.configurations;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
