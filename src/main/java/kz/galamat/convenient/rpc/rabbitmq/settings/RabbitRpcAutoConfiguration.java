@@ -36,7 +36,7 @@ public class RabbitRpcAutoConfiguration {
      */
     @Bean
     public Queue rpcReplyQueue() {
-        return new Queue(rpcProperties.getReplyQueueName());
+        return new Queue(rpcProperties.getReplyQueueName(), false);
     }
 
     /** *
