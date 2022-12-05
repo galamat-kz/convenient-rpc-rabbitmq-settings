@@ -13,7 +13,7 @@ public class RpcProperties implements InitializingBean {
 
     private String queue;
     private String replyQueuePrefix;
-    private Boolean appendRandomForReplyQueueName;
+    private boolean appendRandomForReplyQueueName = true;
     private String exchange;
     private String replyQueueName;
     private long replyTimeout;
@@ -39,7 +39,9 @@ public class RpcProperties implements InitializingBean {
     }
 
     public void setAppendRandomForReplyQueueName(Boolean appendRandomForReplyQueueName) {
-        this.appendRandomForReplyQueueName = appendRandomForReplyQueueName;
+        if (appendRandomForReplyQueueName != null) {
+            this.appendRandomForReplyQueueName = appendRandomForReplyQueueName;
+        }
     }
 
     public String getExchange() {
