@@ -84,11 +84,11 @@ public class RabbitRpcAutoConfiguration {
      * Configure listener for return queue
      */
     @Bean
-    public SimpleMessageListenerContainer replyContainer(ConnectionFactory connectionFactory) {
+    public SimpleMessageListenerContainer replyContainer(ConnectionFactory connectionFactory, RabbitTemplate rabbitTemplate) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(rpcProperties.getReplyQueueName());
-        container.setMessageListener(rabbitTemplate(connectionFactory));
+        container.setMessageListener(rabbitTemplate);
         container.setReceiveTimeout(rpcProperties.getReplyTimeout());
         return container;
     }
